@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace SudokoSchemaGenerator.Logic
+namespace SudokuSchemaGenerator.Logic
 {
     public class LinesLogic
     {
