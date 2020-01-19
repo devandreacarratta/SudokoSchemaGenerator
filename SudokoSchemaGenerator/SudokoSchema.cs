@@ -1,7 +1,7 @@
 ﻿using SudokoSchemaGenerator.DTO;
 using SudokoSchemaGenerator.Logic;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace SudokoSchemaGenerator
 {
@@ -17,10 +17,8 @@ namespace SudokoSchemaGenerator
         public SudokoSchemaDTO Generate()
         {
             SudokoSchemaDTO sudoko = new SudokoSchemaDTO();
-            GenerateBasicSchema(ref sudoko);
-            CalculateMatrixSchema(ref sudoko);
-
             CalculateNumbersToShow(ref sudoko);
+            GenerateBasicSchema(ref sudoko);
 
             return sudoko;
         }
@@ -53,14 +51,7 @@ namespace SudokoSchemaGenerator
 
         }
 
-        private void CalculateMatrixSchema(ref SudokoSchemaDTO sudoko)
-        {
-            foreach (var item in sudoko.Solution)
-            {
-                var chars = item.ToCharArray();
-                sudoko.SolutionMatrix.Add(chars);
-            }
-        }
+
 
         private void GenerateBasicSchema(ref SudokoSchemaDTO sudoko)
         {
@@ -77,6 +68,31 @@ namespace SudokoSchemaGenerator
 
                 if (columns.IsValid(sudoko.Solution, row))
                 {
+                    var chars = row.ToCharArray();
+
+                    for (int i = 0; i < chars.Length; i++)
+                    {
+                        var cell = new CellDTO(sudoko.Solution.Count, i)
+                        {
+                            Value = chars[i].ToString(),
+                            IsVisible = false,
+                        };
+
+                        foreach (var item in sudoko.CellsToShow)
+                        {
+                            if (item.Row != sudoko.Solution.Count) { continue; }
+
+                            if (item.Column != i) { continue; }
+
+                            cell.IsVisible = true;
+                        }
+
+
+                        sudoko.SolutionMatrix.Add(cell);
+                    }
+
+
+                    sudoko.Lines.Add(new LineDTO(sudoko.Solution.Count, row));
                     sudoko.Solution.Add(row);
                 }
             }
