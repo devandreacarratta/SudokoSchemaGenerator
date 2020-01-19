@@ -1,13 +1,11 @@
 ﻿using SudokoSchemaGenerator.DTO;
 using SudokoSchemaGenerator.Logic;
 using System;
-using System.Linq;
 
 namespace SudokoSchemaGenerator
 {
     public class SudokoSchema
     {
-
         private const int NUMBER_OF_ELEMENTS = 81;
 
         public SudokoSchema()
@@ -26,7 +24,6 @@ namespace SudokoSchemaGenerator
         private void CalculateNumbersToShow(ref SudokoSchemaDTO sudoko)
         {
             int position = 0;
-
 
             Random random = new Random();
             while (position < NUMBER_OF_ELEMENTS)
@@ -48,10 +45,7 @@ namespace SudokoSchemaGenerator
                 BaseCellDTO cell = new BaseCellDTO(div, divMod);
                 sudoko.CellsToShow.Add(cell);
             }
-
         }
-
-
 
         private void GenerateBasicSchema(ref SudokoSchemaDTO sudoko)
         {
@@ -87,10 +81,8 @@ namespace SudokoSchemaGenerator
                             cell.IsVisible = true;
                         }
 
-
                         sudoko.SolutionMatrix.Add(cell);
                     }
-
 
                     sudoko.Lines.Add(new LineDTO(sudoko.Solution.Count, row));
                     sudoko.Solution.Add(row);

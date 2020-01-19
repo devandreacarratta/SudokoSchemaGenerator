@@ -17,6 +17,7 @@
             this.Row = row;
             this.Column = column;
         }
+
         public int Row { get; private set; }
         public int Column { get; private set; }
     }

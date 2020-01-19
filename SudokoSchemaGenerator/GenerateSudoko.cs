@@ -14,7 +14,7 @@ namespace SudokoSchemaGenerator
             ILogger log)
         {
             SudokoSchema sudoko = new SudokoSchema();
-                var result = sudoko.Generate();
+            var result = sudoko.Generate();
 
             return JsonConvert.SerializeObject(result);
         }
