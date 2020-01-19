@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SudokuSchemaGenerator", "SudokuSchemaGenerator.csproj", "{DAE3335F-85C8-4B82-9C23-EEBBFAC4A56E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SudokuSchemaGenerator", "SudokuSchemaGenerator\SudokuSchemaGenerator.csproj", "{F2AE7458-AA81-4589-AEDE-5C5F7C33ADF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DAE3335F-85C8-4B82-9C23-EEBBFAC4A56E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DAE3335F-85C8-4B82-9C23-EEBBFAC4A56E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DAE3335F-85C8-4B82-9C23-EEBBFAC4A56E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DAE3335F-85C8-4B82-9C23-EEBBFAC4A56E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2AE7458-AA81-4589-AEDE-5C5F7C33ADF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2AE7458-AA81-4589-AEDE-5C5F7C33ADF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2AE7458-AA81-4589-AEDE-5C5F7C33ADF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2AE7458-AA81-4589-AEDE-5C5F7C33ADF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
