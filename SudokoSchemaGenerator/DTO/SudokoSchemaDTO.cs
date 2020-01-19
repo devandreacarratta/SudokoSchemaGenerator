@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace SudokoSchemaGenerator.DTO
+namespace SudokuSchemaGenerator.DTO
 {
-    public class SudokoSchemaDTO
+    public class SudokuSchemaDTO
     {
         public List<string> Solution { get; set; } = new List<string>();
 

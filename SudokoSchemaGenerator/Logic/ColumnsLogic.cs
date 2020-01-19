@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SudokoSchemaGenerator.Logic
+namespace SudokuSchemaGenerator.Logic
 {
     public class ColumnsLogic
     {

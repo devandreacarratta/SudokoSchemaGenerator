@@ -4,19 +4,19 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace SudokoSchemaGenerator
+namespace SudokuSchemaGenerator
 {
-    public static class GenerateSudoko
+    public static class GenerateSudoku
     {
-        [FunctionName("GenerateSudoko")]
+        [FunctionName("GenerateSudoku")]
         public static string Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            SudokoSchema sudoko = new SudokoSchema();
-            var result = sudoko.Generate();
+            SudokuSchema sudokuSchema = new SudokuSchema();
+            var result = sudokuSchema.Generate();
 
-            return JsonConvert.SerializeObject(result);
+            return JsonConvert.SerializeObject(result, Formatting.None);
         }
     }
 }

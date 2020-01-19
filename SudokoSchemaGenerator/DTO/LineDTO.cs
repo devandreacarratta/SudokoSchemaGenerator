@@ -1,4 +1,4 @@
-﻿namespace SudokoSchemaGenerator.DTO
+﻿namespace SudokuSchemaGenerator.DTO
 {
     public class LineDTO
     {

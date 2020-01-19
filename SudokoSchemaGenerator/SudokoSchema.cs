@@ -1,27 +1,26 @@
-﻿using SudokoSchemaGenerator.DTO;
-using SudokoSchemaGenerator.Logic;
+﻿using SudokuSchemaGenerator.DTO;
+using SudokuSchemaGenerator.Logic;
 using System;
 
-namespace SudokoSchemaGenerator
+namespace SudokuSchemaGenerator
 {
-    public class SudokoSchema
+    public class SudokuSchema
     {
         private const int NUMBER_OF_ELEMENTS = 81;
 
-        public SudokoSchema()
+        public SudokuSchema()
         {
         }
 
-        public SudokoSchemaDTO Generate()
+        public SudokuSchemaDTO Generate()
         {
-            SudokoSchemaDTO sudoko = new SudokoSchemaDTO();
-            CalculateNumbersToShow(ref sudoko);
-            GenerateBasicSchema(ref sudoko);
-
-            return sudoko;
+            SudokuSchemaDTO result = new SudokuSchemaDTO();
+            CalculateNumbersToShow(ref result);
+            GenerateBasicSchema(ref result);
+            return result;
         }
 
-        private void CalculateNumbersToShow(ref SudokoSchemaDTO sudoko)
+        private void CalculateNumbersToShow(ref SudokuSchemaDTO sudoku)
         {
             int position = 0;
 
@@ -43,49 +42,49 @@ namespace SudokoSchemaGenerator
                 var div = (position / 9);
 
                 BaseCellDTO cell = new BaseCellDTO(div, divMod);
-                sudoko.CellsToShow.Add(cell);
+                sudoku.CellsToShow.Add(cell);
             }
         }
 
-        private void GenerateBasicSchema(ref SudokoSchemaDTO sudoko)
+        private void GenerateBasicSchema(ref SudokuSchemaDTO sudoku)
         {
             ColumnsLogic columns = new ColumnsLogic();
             LinesLogic lines = new LinesLogic();
 
-            while (sudoko.Solution.Count < 9)
+            while (sudoku.Solution.Count < 9)
             {
                 string row = lines.GenerateNew();
-                if (sudoko.Solution.Contains(row))
+                if (sudoku.Solution.Contains(row))
                 {
                     continue;
                 }
 
-                if (columns.IsValid(sudoko.Solution, row))
+                if (columns.IsValid(sudoku.Solution, row))
                 {
                     var chars = row.ToCharArray();
 
                     for (int i = 0; i < chars.Length; i++)
                     {
-                        var cell = new CellDTO(sudoko.Solution.Count, i)
+                        var cell = new CellDTO(sudoku.Solution.Count, i)
                         {
                             Value = chars[i].ToString(),
                             IsVisible = false,
                         };
 
-                        foreach (var item in sudoko.CellsToShow)
+                        foreach (var item in sudoku.CellsToShow)
                         {
-                            if (item.Row != sudoko.Solution.Count) { continue; }
+                            if (item.Row != sudoku.Solution.Count) { continue; }
 
                             if (item.Column != i) { continue; }
 
                             cell.IsVisible = true;
                         }
 
-                        sudoko.SolutionMatrix.Add(cell);
+                        sudoku.SolutionMatrix.Add(cell);
                     }
 
-                    sudoko.Lines.Add(new LineDTO(sudoko.Solution.Count, row));
-                    sudoko.Solution.Add(row);
+                    sudoku.Lines.Add(new LineDTO(sudoku.Solution.Count, row));
+                    sudoku.Solution.Add(row);
                 }
             }
         }
